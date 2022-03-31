@@ -30,7 +30,7 @@
 	<title>Login</title>
 </svelte:head>
 
-{#if messages}
+{#if messages?.length}
 	<div class="bg-sky-600 fixed w-full bottom-0 left-0">
 		<div class="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
 			<div class="flex items-center justify-between flex-wrap">
