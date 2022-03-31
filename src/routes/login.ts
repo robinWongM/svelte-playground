@@ -49,6 +49,25 @@ export const get: RequestHandler = ({ request }) => {
 						};
 					});
 			}
+            if ((request.headers.get('user-agent') || '').toLowerCase().includes('micromessenger')) {
+				return axios
+					.request({
+						url: res.data.ui.action,
+						method: res.data.ui.method,
+						data: {
+							method: 'oidc',
+							provider: 'wecom'
+						}
+					})
+					.then((res) => {
+						return {
+							status: 200,
+							headers: res.headers,
+							body: res.data
+						};
+					});
+            }
+
 			return {
 				status: 200,
 				headers: res.headers,
