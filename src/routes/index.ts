@@ -3,7 +3,7 @@ import axios from 'axios'
 import type { AxiosError } from 'axios'
 
 export const get: RequestHandler = ({ request }) => {
-    return axios.get('/kratos/sessions/whoami', {
+    return axios.get('https://accounts.ecnc.link/kratos/sessions/whoami', {
         headers: {
             cookie: request.headers.get('cookie')
         }

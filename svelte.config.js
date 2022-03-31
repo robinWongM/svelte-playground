@@ -13,8 +13,21 @@ const config = {
 		// Override http methods in the Todo forms
 		methodOverride: {
 			allowed: ['PATCH', 'DELETE']
+		},
+
+		vite: {
+			server: {
+				https: true,
+				proxy: {
+					'^/api/.*': {
+						target: 'https://accounts.ecnc.link',
+						changeOrigin: true,
+						rewrite: (path) => path.replace(/^\/api/, '/kratos')
+					},
+				}
+			}
 		}
-	}
+	},
 };
 
 export default config;
