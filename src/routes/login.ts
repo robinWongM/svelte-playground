@@ -31,7 +31,7 @@ export const get: RequestHandler = ({ request }) => {
 			}
 		})
 		.then((res) => {
-			if (request.headers.get('user-agent').includes('lark')) {
+			if ((request.headers.get('user-agent') || '').toLowerCase().includes('lark')) {
 				return axios
 					.request({
 						url: res.data.ui.action,
